@@ -41,6 +41,12 @@ while True:
         detections = results[0].boxes
         if len(detections) > 0 and frame_count % 30 == 0:  # Print every 30 frames
             print(f"\n🎯 Frame {frame_count} - Detected {len(detections)} object(s):")
+            
+            # CHALLENGE 1: Count people
+            num_people = sum(1 for detection in detections 
+                           if results[0].names[int(detection.cls[0])] == 'person')
+            print(f"👥 People detected: {num_people}")
+            
             for i, detection in enumerate(detections):
                 class_id = int(detection.cls[0])
                 class_name = results[0].names[class_id]
@@ -52,9 +58,19 @@ while True:
     # Show the frame
     cv2.imshow('YOLOv8 Detection', annotated_frame)
     
+    # Handle keyboard commands
+    key = cv2.waitKey(1) & 0xFF
+    
     # Press Q to quit
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if key == ord('q'):
+        print("👋 Quitting...")
         break
+    
+    # CHALLENGE 2: Press S to save screenshot
+    if key == ord('s'):
+        filename = f'detected_frame_{frame_count}.png'
+        cv2.imwrite(filename, annotated_frame)
+        print(f"📸 Screenshot saved as: {filename}")
 
 print("\n✅ Detection complete!")
 camera.release()
