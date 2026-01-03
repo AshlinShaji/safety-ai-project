@@ -1,0 +1,13 @@
+names:
+- Hard-Hat
+nc: 1
+path: C:\Users\ashli\Desktop\safety-ai-project\datasets\helmet-detection
+roboflow:
+  license: CC BY 4.0
+  project: hard-hat-detection-fsdmt
+  url: https://universe.roboflow.com/final-prac/hard-hat-detection-fsdmt/dataset/2
+  version: 2
+  workspace: final-prac
+test: C:\Users\ashli\Desktop\safety-ai-project\datasets\helmet-detection\images/test
+train: C:\Users\ashli\Desktop\safety-ai-project\datasets\helmet-detection\images/train
+val: C:\Users\ashli\Desktop\safety-ai-project\datasets\helmet-detection\images/valid
